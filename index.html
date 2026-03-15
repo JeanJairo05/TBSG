@@ -9,33 +9,53 @@
 <body>
     <div id="header-placeholder"></div>
 
-    <main>
-        <section class="hero">
+<main>
+    <section class="hero">
+        <div class="hero-content">
             <h1>The Bear Study Group</h1>
-            <p>Transformando ideas en soluciones digitales de alto impacto.</p>
-            <a href="proyectos.html" class="btn-primary">Ver Proyectos</a>
-        </section>
+            <p class="tagline">Innovación que trasciende. Soluciones de software a la medida de tus ambiciones.</p>
+            <div class="hero-btns">
+                <a href="proyectos.html" class="btn-primary">Ver Portafolio</a>
+                <a href="#nosotros" class="btn-secondary">Conócenos</a>
+            </div>
+        </div>
+    </section>
 
-        <section class="features">
+    <section id="nosotros" class="identidad">
+        <div class="container">
+            <div class="identidad-grid">
+                <div class="identidad-card">
+                    <span class="icon">🚀</span>
+                    <h3>Nuestra Misión</h3>
+                    <p>Potenciar el crecimiento de empresas peruanas a través de tecnología de vanguardia y diseño centrado en el usuario.</p>
+                </div>
+                <div class="identidad-card">
+                    <span class="icon">👁️</span>
+                    <h3>Nuestra Visión</h3>
+                    <p>Ser el referente líder en desarrollo de software en San Borja para el 2030, reconocidos por nuestra excelencia técnica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="servicios">
+        <h2 class="section-title">Nuestras Especialidades</h2>
+        <div class="features-grid">
             <div class="card">
-                <h3>Desarrollo</h3>
-                <p>Software a medida con las últimas tecnologías.</p>
+                <div class="card-icon">💻</div>
+                <h3>Desarrollo Web</h3>
+                <p>Aplicaciones rápidas, seguras y escalables con Node.js y Angular.</p>
             </div>
             <div class="card">
-                <h3>Diseño</h3>
-                <p>Interfaces intuitivas y experiencias únicas.</p>
+                <div class="card-icon">🎨</div>
+                <h3>Diseño UI/UX</h3>
+                <p>Interfaces que enamoran y experiencias que retienen a tus clientes.</p>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 The Bear Study Group - San Borja, Lima</p>
-    </footer>
-
-    <script>
-        fetch("header.html")
-            .then(res => res.text())
-            .then(data => { document.getElementById("header-placeholder").innerHTML = data; });
-    </script>
-</body>
-</html>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Consultoría IT</h3>
+                <p>Optimizamos tus procesos digitales para maximizar tu rentabilidad.</p>
+            </div>
+        </div>
+    </section>
+</main>
