@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - The Bear Study Group</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <h2 class="section-title">Nuestro Equipo</h2>
+        <section class="equipo">
+            <div class="miembro">
+                <img src="img/Lucho.png" alt="Luis">
+                <h3>Luis</h3>
+                <p>Socio Fundador</p>
+            </div>
+            <div class="miembro">
+                <img src="img/Paco.png" alt="Francisco">
+                <h3>Francisco</h3>
+                <p>Socio Fundador</p>
+            </div>
+            <div class="miembro">
+                <img src="img/Jairo.png" alt="Jairo">
+                <h3>Jairo</h3>
+                <p>Lead Developer</p>
+            </div>
+            <div class="miembro">
+                <img src="img/Otto.png" alt="Octavio">
+                <h3>Octavio</h3>
+                <p>UX/UI Designer</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => { document.getElementById("header-placeholder").innerHTML = data; });
+    </script>
+</body>
+</html>

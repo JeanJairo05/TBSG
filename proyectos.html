@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup iOS - Proyectos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(r => r.text())
+      .then(d => document.getElementById("header").innerHTML = d);
+  </script>
+
+  <main>
+    <h1>Mensaje temporal - Proyectos</h1>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Startup iOS - Todos los derechos reservados</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bear Study Group - Inicio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero">
+            <h1>The Bear Study Group</h1>
+            <p>Transformando ideas en soluciones digitales de alto impacto.</p>
+            <a href="proyectos.html" class="btn-primary">Ver Proyectos</a>
+        </section>
+
+        <section class="features">
+            <div class="card">
+                <h3>Desarrollo</h3>
+                <p>Software a medida con las últimas tecnologías.</p>
+            </div>
+            <div class="card">
+                <h3>Diseño</h3>
+                <p>Interfaces intuitivas y experiencias únicas.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Bear Study Group - San Borja, Lima</p>
+    </footer>
+
+    <script>
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => { document.getElementById("header-placeholder").innerHTML = data; });
+    </script>
+</body>
+</html>
