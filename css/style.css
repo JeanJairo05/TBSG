@@ -251,3 +251,35 @@ footer {
     .nav-links { display: none; } /* Podrías añadir un menú hamburguesa después */
     .identidad-grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   AJUSTE DE TAMAÑO DE IMÁGENES (GRANDES)
+   ========================================= */
+
+/* 1. Imágenes para Misión y Visión (Sección Superior) */
+.identidad-img {
+    width: 200px;  /* ¡Aumentado de 80px a 200px! */
+    height: auto;
+    margin-bottom: 30px; /* Más espacio abajo */
+    display: block;
+    border-radius: 15px; /* Bordes suaves */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
+}
+
+/* 2. Imágenes para Servicios (Tarjetas Inferiores) */
+.card-img {
+    width: 150px;  /* ¡Aumentado de 60px a 150px! */
+    height: auto;
+    margin-bottom: 25px; /* Más espacio abajo */
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+}
+
+/* Asegurar que las tarjetas sigan centradas y tengan espacio */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px; /* Más aire dentro de la tarjeta */
+}
