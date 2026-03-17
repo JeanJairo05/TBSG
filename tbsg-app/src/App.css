@@ -1,290 +1,56 @@
 /* =========================================
-   VARIABLES GLOBALES (Colores y Estilos)
+   1. VARIABLES Y CONFIGURACIÓN BASE
    ========================================= */
 :root {
-    --primary: #fbbf24;       /* Amarillo "Oso" */
-    --primary-dark: #d97706;  /* Amarillo oscuro para hovers */
-    --bg: #0f172a;           /* Fondo: Azul muy oscuro */
-    --card-bg: #1e293b;       /* Fondo de Tarjetas: Gris azulado */
-    --text: #ffffff !important;      /* Blanco Puro (Forzado) */
-    --text-dim: #cbd5e1 !important;  /* Gris Claro (Forzado) */
-    --transition: all 0.3s ease;
+  --primary: #ffcc00;       /* Dorado Bear */
+  --bg-dark: #050a1a;       /* El azul profundo original */
+  --bg-card: #0c142b;       /* Azul un poco más claro para contraste */
+  --text-light: #ffffff;
+  --text-dim: #b0b0b0;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* =========================================
-   RESETEO Y BASES
-   ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Forzar color de texto en elementos comunes */
-h1, h2, h3, h4, p, span, li, a {
-    color: var(--text);
-}
-
-/* =========================================
-   NAVEGACIÓN (Header)
-   ========================================= */
-nav {
-    background: rgba(15, 23, 42, 0.95);
-    padding: 1rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo { 
-    height: 50px; 
-    filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.3));
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    color: var(--text-dim);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--primary);
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* =========================================
-   HERO SECTION (Inicio)
+   2. ANIMACIONES (REBOTE Y FADE)
    ========================================= */
-.hero {
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-    padding: 0 20px;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #fbbf24, #f59e0b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: var(--primary); /* Respaldo si falla el gradiente */
-}
-
-.tagline {
-    font-size: 1.25rem;
-    color: var(--text-dim);
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-}
-
-/* Botones */
-.hero-btns {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 14px 32px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: var(--transition);
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: #000 !important;
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2);
-}
-
-.btn-secondary {
-    border: 2px solid var(--primary);
-    color: var(--primary) !important;
-}
-
-.btn-secondary:hover {
-    background: rgba(251, 191, 36, 0.1);
-}
-
-/* =========================================
-   SECCIÓN IDENTIDAD (Misión/Visión)
-   ========================================= */
-.identidad {
-    padding: 100px 20px;
-}
-
-.identidad-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.identidad-card {
-    background: var(--card-bg);
-    padding: 50px 40px;
-    border-radius: 24px;
-    border-top: 4px solid var(--primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: var(--transition);
-}
-
-.identidad-card:hover {
-    transform: translateY(-5px);
-}
-
-.identidad-card h3 {
-    color: var(--primary);
-    margin: 15px 0;
-    font-size: 1.8rem;
-}
-
-.icon {
-    font-size: 2.5rem;
-}
-
-/* =========================================
-   SECCIÓN SERVICIOS (Especialidades)
-   ========================================= */
-.servicios {
-    padding: 60px 20px 120px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.8rem;
-    margin-bottom: 50px;
-    color: var(--primary);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.card {
-    background: rgba(30, 41, 59, 0.5);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-}
-
-.card:hover {
-    background: var(--card-bg);
-    border-color: var(--primary);
+@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  80% {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.card-icon {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
-    display: block;
-}
-
-.card h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-
-.card p {
-    color: var(--text-dim);
-}
-
-/* =========================================
-   FOOTER
-   ========================================= */
-footer {
-    text-align: center;
-    padding: 60px 20px;
-    background: #000;
-    color: var(--text-dim);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* =========================================
-   RESPONSIVE (Móviles)
-   ========================================= */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.8rem; }
-    .nav-links { display: none; } /* Podrías añadir un menú hamburguesa después */
-    .identidad-grid { grid-template-columns: 1fr; }
-}
-
-/* =========================================
-   AJUSTE DE TAMAÑO DE IMÁGENES (GRANDES)
-   ========================================= */
-
-/* 1. Imágenes para Misión y Visión (Sección Superior) */
-.identidad-img {
-    width: 200px;  /* ¡Aumentado de 80px a 200px! */
-    height: auto;
-    margin-bottom: 30px; /* Más espacio abajo */
-    display: block;
-    border-radius: 15px; /* Bordes suaves */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
-}
-
-/* 2. Imágenes para Servicios (Tarjetas Inferiores) */
-.card-img {
-    width: 150px;  /* ¡Aumentado de 60px a 150px! */
-    height: auto;
-    margin-bottom: 25px; /* Más espacio abajo */
-    border-radius: 12px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-}
-
-/* Asegurar que las tarjetas sigan centradas y tengan espacio */
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px; /* Más aire dentro de la tarjeta */
-}
-
-/* 1. Definir la animación base */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -296,13 +62,118 @@ footer {
   }
 }
 
-/* 2. Clase utilidad para aplicar la animación */
 .animate-fade-in {
   animation: fadeInUp 0.8s ease-out forwards;
-  opacity: 0; /* Empieza invisible */
 }
 
-/* 3. Retrasos para un efecto "cascada" (opcional pero pro) */
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
+.animate-bounce-down {
+  animation: bounceInDown 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  opacity: 0; /* Empieza invisible hasta que la animación arranque */
+}
+
+.delay-equipo-1 { animation-delay: 0.2s; }
+.delay-equipo-2 { animation-delay: 0.4s; }
+.delay-equipo-3 { animation-delay: 0.6s; }
+.delay-equipo-4 { animation-delay: 0.8s; }
+
+/* =========================================
+   3. NAVEGACIÓN (HEADER)
+   ========================================= */
+header {
+  background: rgba(5, 10, 26, 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 80px; /* Logo grande */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(-3deg);
+  filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+/* =========================================
+   4. EQUIPO (NOSOTROS)
+   ========================================= */
+.equipo-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.miembro {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.miembro:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.miembro img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  margin-bottom: 15px;
+  transition: var(--transition);
+}
+
+.miembro:hover img {
+  border-color: var(--primary);
+}
+
+.miembro h3 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.miembro p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
