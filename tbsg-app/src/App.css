@@ -1,0 +1,285 @@
+/* =========================================
+   VARIABLES GLOBALES (Colores y Estilos)
+   ========================================= */
+:root {
+    --primary: #fbbf24;       /* Amarillo "Oso" */
+    --primary-dark: #d97706;  /* Amarillo oscuro para hovers */
+    --bg: #0f172a;           /* Fondo: Azul muy oscuro */
+    --card-bg: #1e293b;       /* Fondo de Tarjetas: Gris azulado */
+    --text: #ffffff !important;      /* Blanco Puro (Forzado) */
+    --text-dim: #cbd5e1 !important;  /* Gris Claro (Forzado) */
+    --transition: all 0.3s ease;
+}
+
+/* =========================================
+   RESETEO Y BASES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Forzar color de texto en elementos comunes */
+h1, h2, h3, h4, p, span, li, a {
+    color: var(--text);
+}
+
+/* =========================================
+   NAVEGACIÓN (Header)
+   ========================================= */
+nav {
+    background: rgba(15, 23, 42, 0.95);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo { 
+    height: 50px; 
+    filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.3));
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* =========================================
+   HERO SECTION (Inicio)
+   ========================================= */
+.hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: var(--primary); /* Respaldo si falla el gradiente */
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+}
+
+/* Botones */
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 14px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #000 !important;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2);
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary);
+    color: var(--primary) !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(251, 191, 36, 0.1);
+}
+
+/* =========================================
+   SECCIÓN IDENTIDAD (Misión/Visión)
+   ========================================= */
+.identidad {
+    padding: 100px 20px;
+}
+
+.identidad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.identidad-card {
+    background: var(--card-bg);
+    padding: 50px 40px;
+    border-radius: 24px;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: var(--transition);
+}
+
+.identidad-card:hover {
+    transform: translateY(-5px);
+}
+
+.identidad-card h3 {
+    color: var(--primary);
+    margin: 15px 0;
+    font-size: 1.8rem;
+}
+
+.icon {
+    font-size: 2.5rem;
+}
+
+/* =========================================
+   SECCIÓN SERVICIOS (Especialidades)
+   ========================================= */
+.servicios {
+    padding: 60px 20px 120px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    color: var(--primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.5);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.card:hover {
+    background: var(--card-bg);
+    border-color: var(--primary);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: var(--text-dim);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    background: #000;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   RESPONSIVE (Móviles)
+   ========================================= */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    .nav-links { display: none; } /* Podrías añadir un menú hamburguesa después */
+    .identidad-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   AJUSTE DE TAMAÑO DE IMÁGENES (GRANDES)
+   ========================================= */
+
+/* 1. Imágenes para Misión y Visión (Sección Superior) */
+.identidad-img {
+    width: 200px;  /* ¡Aumentado de 80px a 200px! */
+    height: auto;
+    margin-bottom: 30px; /* Más espacio abajo */
+    display: block;
+    border-radius: 15px; /* Bordes suaves */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Sombra para dar profundidad */
+}
+
+/* 2. Imágenes para Servicios (Tarjetas Inferiores) */
+.card-img {
+    width: 150px;  /* ¡Aumentado de 60px a 150px! */
+    height: auto;
+    margin-bottom: 25px; /* Más espacio abajo */
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+}
+
+/* Asegurar que las tarjetas sigan centradas y tengan espacio */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px; /* Más aire dentro de la tarjeta */
+}
