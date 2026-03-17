@@ -1,10 +1,7 @@
-/* =========================================
-   1. VARIABLES Y CONFIGURACIÓN BASE
-   ========================================= */
 :root {
-  --primary: #ffcc00;       /* Dorado Bear */
-  --bg-dark: #050a1a;       /* El azul profundo original */
-  --bg-card: #0c142b;       /* Azul un poco más claro para contraste */
+  --primary: #ffcc00;
+  --bg-dark: #050a1a;
+  --bg-card: #0c142b;
   --text-light: #ffffff;
   --text-dim: #b0b0b0;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -14,166 +11,171 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
   background-color: var(--bg-dark);
   color: var(--text-light);
-  line-height: 1.6;
   overflow-x: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* =========================================
-   2. ANIMACIONES (REBOTE Y FADE)
-   ========================================= */
-@keyframes bounceInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(20px);
-  }
-  80% {
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animate-bounce-down {
-  animation: bounceInDown 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-  opacity: 0; /* Empieza invisible hasta que la animación arranque */
-}
-
-.delay-equipo-1 { animation-delay: 0.2s; }
-.delay-equipo-2 { animation-delay: 0.4s; }
-.delay-equipo-3 { animation-delay: 0.6s; }
-.delay-equipo-4 { animation-delay: 0.8s; }
-
-/* =========================================
-   3. NAVEGACIÓN (HEADER)
-   ========================================= */
+/* --- HEADER: LOGO IZQUIERDA, MENÚ DERECHA --- */
 header {
-  background: rgba(5, 10, 26, 0.85);
+  background: rgba(5, 10, 26, 0.95);
   backdrop-filter: blur(10px);
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 1000;
+  height: 90px;
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 5%;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1300px; /* Un poco más ancho para que los links se alejen más */
   margin: 0 auto;
+  padding: 0 30px;
 }
 
 .logo {
-  height: 80px; /* Logo grande */
+  height: 70px;
   width: auto;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.1) rotate(-3deg);
-  filter: drop-shadow(0 0 10px var(--primary));
 }
 
 .nav-links {
   display: flex;
+  gap: 35px;
   list-style: none;
-  gap: 2rem;
+  /* El truco mágico: empuja todo lo que tiene a la izquierda */
+  margin-left: auto; 
 }
 
 .nav-links a {
-  color: var(--text-dim);
+  color: white;
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
-  position: relative;
 }
 
-.nav-links a:hover {
-  color: var(--primary);
-}
+.nav-links a:hover { color: var(--primary); }
 
-/* =========================================
-   4. EQUIPO (NOSOTROS)
-   ========================================= */
-.equipo-section {
-  padding: 80px 0;
+/* --- HERO: CENTRADO PERFECTO --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 120px 20px 60px;
+  background: radial-gradient(circle at center, #0c142b 0%, #050a1a 100%);
 }
 
-.equipo-grid {
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 10px; /* Pegado al título, pero... */
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: var(--text-dim);
+  max-width: 650px;
+  margin: 25px auto 45px; /* 25px de separación con el título y 45px con los botones */
+  line-height: 1.6;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  min-width: 180px;
+  transition: var(--transition);
+}
+
+.btn-primary { background-color: var(--primary); color: #050a1a !important; }
+.btn-secondary { border: 2px solid var(--primary); color: var(--primary) !important; }
+
+/* --- IDENTIDAD: MISIÓN Y VISIÓN (CORREGIDO) --- */
+.identidad {
+  padding: 100px 20px;
+  background: var(--bg-dark);
+}
+
+.identidad-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
-  margin-top: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.identidad-card {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.identidad-img {
+  width: 80px; /* Tamaño fijo para que no se estire */
+  height: 80px;
+  object-fit: contain; /* Mantiene la proporción del oso */
+  margin-bottom: 20px;
+}
+
+/* --- EQUIPO: EL TAMAÑO DE ANTES --- */
+.equipo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 60px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .miembro {
   background: var(--bg-card);
   padding: 30px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: var(--transition);
-}
-
-.miembro:hover {
-  border-color: var(--primary);
-  transform: translateY(-5px);
+  text-align: center;
 }
 
 .miembro img {
-  width: 150px;
-  height: 150px;
+  width: 140px; /* Volvemos al tamaño original */
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid transparent;
   margin-bottom: 15px;
-  transition: var(--transition);
 }
 
-.miembro:hover img {
-  border-color: var(--primary);
+/* ANIMACIONES */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.miembro h3 {
-  color: var(--primary);
-  margin-bottom: 5px;
+@keyframes bounceInDown {
+  0% { opacity: 0; transform: translateY(-100px); }
+  60% { opacity: 1; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.miembro p {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-}
+.animate-fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+.animate-bounce-down { animation: bounceInDown 1s forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
