@@ -8,17 +8,24 @@ function App() {
   return (
     <>
       <header>
-        <nav>
-          <div className="nav-container">
+        {/* EL CONTENEDOR PRINCIPAL VA DIRECTO EN EL HEADER */}
+        <div className="nav-container">
+          
+          {/* LOGO A LA IZQUIERDA (Le puse Link para que al darle clic vuelva al inicio) */}
+          <Link to="/">
             <img src="/img/logo.png" alt="Bear Logo" className="logo" />
+          </Link>
+          
+          {/* EL NAV ENVUELVE SOLO A LOS LINKS PARA QUE SE VAYAN A LA DERECHA */}
+          <nav>
             <ul className="nav-links">
-              {/* USA LINK TO EN LUGAR DE A HREF */}
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/nosotros">Sobre Nosotros</Link></li>
               <li><Link to="/proyectos">Proyectos</Link></li>
             </ul>
-          </div>
-        </nav>
+          </nav>
+          
+        </div>
       </header>
 
       <Routes>
