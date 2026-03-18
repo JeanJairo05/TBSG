@@ -22,22 +22,29 @@ body {
 
 /* --- DOMANDO AL OSO (Versión Circular Premium) --- */
 .logo {
-  height: 75px !important; 
-  width: 75px !important; /* Forzamos a que el ancho sea igual al alto para un círculo perfecto */
-  border-radius: 50%; /* Esta es la magia que lo hace redondo */
-  object-fit: cover; /* Evita que la imagen del oso se aplaste o se estire */
-  display: block; 
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición con un ligero rebote */
-  
+  height: 75px !important;
+  width: 75px !important;
+  /* Forzamos a que el ancho sea igual al alto para un círculo perfecto */
+  border-radius: 50%;
+  /* Esta es la magia que lo hace redondo */
+  object-fit: cover;
+  /* Evita que la imagen del oso se aplaste o se estire */
+  display: block;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Transición con un ligero rebote */
+
   /* Un borde sutil dorado para enmarcarlo */
-  border: 2px solid rgba(255, 204, 0, 0.3); 
+  border: 2px solid rgba(255, 204, 0, 0.3);
 }
 
 /* El efecto al pasar el mouse */
 .logo:hover {
-  transform: scale(1.08) rotate(5deg); /* Crece un poquito y hace un mini giro fachero */
-  border-color: var(--primary); /* El borde se vuelve dorado sólido */
-  box-shadow: 0 0 20px rgba(255, 204, 0, 0.6), inset 0 0 10px rgba(255, 204, 0, 0.2); /* El resplandor exterior e interior */
+  transform: scale(1.08) rotate(5deg);
+  /* Crece un poquito y hace un mini giro fachero */
+  border-color: var(--primary);
+  /* El borde se vuelve dorado sólido */
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.6), inset 0 0 10px rgba(255, 204, 0, 0.2);
+  /* El resplandor exterior e interior */
 }
 
 /* Ajuste para cuando haces scroll y el cristal se achica */
@@ -47,7 +54,7 @@ header.scrolled .logo {
 }
 
 /* Para que el Link que envuelve al oso no se estire */
-.nav-container > a {
+.nav-container>a {
   display: flex;
   align-items: center;
 }
@@ -55,7 +62,8 @@ header.scrolled .logo {
 /* --- HEADER: LOGO IZQUIERDA, MENÚ DERECHA --- */
 /* --- HEADER: EMPIEZA TRANSPARENTE --- */
 header {
-  background: transparent; /* Antes tenías rgba... cámbialo a transparent */
+  background: transparent;
+  /* Antes tenías rgba... cámbialo a transparent */
   position: fixed;
   width: 100%;
   top: 0;
@@ -65,34 +73,43 @@ header {
   display: flex;
   align-items: center;
   border-bottom: 1px solid transparent;
-  transition: all 0.4s ease; /* Para que el cambio sea suave */
+  transition: all 0.4s ease;
+  /* Para que el cambio sea suave */
 }
 
 /* 1.5 HEADER MÓVIL: AL HACER SCROLL (El Cristal) */
-  header.scrolled {
-    background: rgba(5, 10, 26, 0.75) !important; /* 75% de opacidad para que se vea el fondo */
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important; /* Soporte para iPhone/Safari */
-    border-bottom: 1px solid rgba(255, 204, 0, 0.2) !important; 
-  }
+header.scrolled {
+  background: rgba(5, 10, 26, 0.75) !important;
+  /* 75% de opacidad para que se vea el fondo */
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  /* Soporte para iPhone/Safari */
+  border-bottom: 1px solid rgba(255, 204, 0, 0.2) !important;
+}
 
 header.scrolled .logo {
-  height: 60px !important; /* El oso también se achica con el menú */
+  height: 60px !important;
+  /* El oso también se achica con el menú */
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between; /* MAGIA: Logo a la izquierda, Menú a la derecha */
+  justify-content: space-between;
+  /* MAGIA: Logo a la izquierda, Menú a la derecha */
   align-items: center;
   width: 100%;
-  max-width: 1200px; /* Ancho máximo para que no se pegue a los bordes de tu monitor */
-  margin: 0 auto;    /* Centra el contenedor en pantallas grandes */
-  padding: 0 40px;   /* Da un respiro a los lados */
+  max-width: 1200px;
+  /* Ancho máximo para que no se pegue a los bordes de tu monitor */
+  margin: 0 auto;
+  /* Centra el contenedor en pantallas grandes */
+  padding: 0 40px;
+  /* Da un respiro a los lados */
 }
 
 .nav-links {
   display: flex;
-  gap: 40px; /* Separación entre Inicio, Nosotros y Proyectos */
+  gap: 40px;
+  /* Separación entre Inicio, Nosotros y Proyectos */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -107,8 +124,10 @@ header.scrolled .logo {
 }
 
 .nav-links a:hover {
-  color: var(--primary); /* Se pone dorado al pasar el mouse */
+  color: var(--primary);
+  /* Se pone dorado al pasar el mouse */
 }
+
 /* --- HERO: CENTRADO PERFECTO --- */
 .hero {
   min-height: 100vh;
@@ -125,14 +144,16 @@ header.scrolled .logo {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   color: var(--primary);
   font-weight: 800;
-  margin-bottom: 10px; /* Pegado al título, pero... */
+  margin-bottom: 10px;
+  /* Pegado al título, pero... */
 }
 
 .tagline {
   font-size: 1.25rem;
   color: var(--text-dim);
   max-width: 650px;
-  margin: 25px auto 45px; /* 25px de separación con el título y 45px con los botones */
+  margin: 25px auto 45px;
+  /* 25px de separación con el título y 45px con los botones */
   line-height: 1.6;
 }
 
@@ -141,7 +162,8 @@ header.scrolled .logo {
   gap: 20px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 16px 32px;
   border-radius: 12px;
   text-decoration: none;
@@ -150,8 +172,15 @@ header.scrolled .logo {
   transition: var(--transition);
 }
 
-.btn-primary { background-color: var(--primary); color: #050a1a !important; }
-.btn-secondary { border: 2px solid var(--primary); color: var(--primary) !important; }
+.btn-primary {
+  background-color: var(--primary);
+  color: #050a1a !important;
+}
+
+.btn-secondary {
+  border: 2px solid var(--primary);
+  color: var(--primary) !important;
+}
 
 /* --- IDENTIDAD: MISIÓN Y VISIÓN (CORREGIDO) --- */
 .identidad {
@@ -176,9 +205,11 @@ header.scrolled .logo {
 }
 
 .identidad-img {
-  width: 80px; /* Tamaño fijo para que no se estire */
+  width: 80px;
+  /* Tamaño fijo para que no se estire */
   height: 80px;
-  object-fit: contain; /* Mantiene la proporción del oso */
+  object-fit: contain;
+  /* Mantiene la proporción del oso */
   margin-bottom: 20px;
 }
 
@@ -200,7 +231,8 @@ header.scrolled .logo {
 }
 
 .miembro img {
-  width: 140px; /* Volvemos al tamaño original */
+  width: 140px;
+  /* Volvemos al tamaño original */
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
@@ -209,20 +241,50 @@ header.scrolled .logo {
 
 /* ANIMACIONES */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes bounceInDown {
-  0% { opacity: 0; transform: translateY(-100px); }
-  60% { opacity: 1; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-fade-in { animation: fadeInUp 0.8s ease-out forwards; }
-.animate-bounce-down { animation: bounceInDown 1s forwards; opacity: 0; }
-.delay-1 { animation-delay: 0.8s; }
-.delay-2 { animation-delay: 1.5s; }
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-bounce-down {
+  animation: bounceInDown 1s forwards;
+  opacity: 0;
+}
+
+.delay-1 {
+  animation-delay: 0.8s;
+}
+
+.delay-2 {
+  animation-delay: 1.5s;
+}
 
 /* =========================================
    RUEDA INTERACTIVA CON SCROLL STICKY
@@ -230,7 +292,7 @@ header.scrolled .logo {
 /* Este wrapper mide 3 pantallas de alto para permitir hacer scroll */
 .servicios-wrapper {
   position: relative;
-  height: 300vh; 
+  height: 300vh;
   background-color: var(--bg-dark);
 }
 
@@ -269,9 +331,11 @@ header.scrolled .logo {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.15); /* Aro súper sutil */
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  /* Aro súper sutil */
   position: relative;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Giro fluido al scrollear */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Giro fluido al scrollear */
 }
 
 /* LOS ORBES (Planetas) */
@@ -281,9 +345,10 @@ header.scrolled .logo {
   left: 50%;
   width: 60px;
   height: 60px;
-  margin: -30px 0 0 -30px; /* Centrado perfecto matemático */
+  margin: -30px 0 0 -30px;
+  /* Centrado perfecto matemático */
   background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -303,7 +368,8 @@ header.scrolled .logo {
   filter: grayscale(0%);
   opacity: 1;
   font-size: 3rem;
-  box-shadow: 0 0 40px rgba(255, 204, 0, 0.4); /* Resplandor dorado como en la foto */
+  box-shadow: 0 0 40px rgba(255, 204, 0, 0.4);
+  /* Resplandor dorado como en la foto */
   z-index: 10;
 }
 
@@ -313,10 +379,12 @@ header.scrolled .logo {
   padding: 40px 30px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto de rebote sutil */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Efecto de rebote sutil */
   position: relative;
   overflow: hidden;
-  text-align: left; /* Alineado a la izquierda se ve más corporativo */
+  text-align: left;
+  /* Alineado a la izquierda se ve más corporativo */
 }
 
 /* El resplandor dorado al hacer hover */
@@ -364,12 +432,13 @@ header.scrolled .logo {
   font-size: 1.05rem;
   line-height: 1.6;
 }
+
 /* =========================================
    PÁGINA DE PROYECTOS (Versión Limpia)
    ========================================= */
 .proyectos-page {
   /* Aumentamos a 200px para que el menú Glass no tape nada */
-  padding-top: 200px; 
+  padding-top: 200px;
   min-height: 100vh;
   padding-bottom: 100px;
   background-color: var(--bg-dark);
@@ -430,9 +499,22 @@ header.scrolled .logo {
   gap: 50px;
 }
 
-.proyecto-info { flex: 1.2; }
-.proyecto-info h3 { font-size: 3rem; color: var(--text-light); margin-bottom: 20px; }
-.proyecto-info p { font-size: 1.2rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 35px; }
+.proyecto-info {
+  flex: 1.2;
+}
+
+.proyecto-info h3 {
+  font-size: 3rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.proyecto-info p {
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
 
 .proyecto-visual {
   flex: 1;
@@ -482,8 +564,13 @@ header.scrolled .logo {
 }
 
 /* --- TAGS --- */
-.tech-stack { display: flex; flex-wrap: wrap; gap: 10px; }
-.tech-stack span { 
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-stack span {
   background: rgba(0, 122, 255, 0.1);
   padding: 6px 14px;
   border-radius: 8px;
@@ -496,7 +583,7 @@ header.scrolled .logo {
    PÁGINA DE PROYECTOS (ESTILOS BASE)
    ========================================= */
 .proyectos-page {
-  padding-top: 250px; 
+  padding-top: 250px;
   min-height: 100vh;
   background-color: var(--bg-dark);
   display: flex;
@@ -548,21 +635,32 @@ header.scrolled .logo {
 /* =========================================
    📱 MODO RESPONSIVE UNIFICADO (MÓVILES Y TABLETS)
    ========================================= */
-.mobile-only { display: none; }
-.desktop-only { display: block; }
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
 
 @media (max-width: 900px) {
-  .desktop-only { display: none !important; }
-  .mobile-only { display: block !important; }
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
 
   /* 1. HEADER MÓVIL REPARADO (Cero decapitaciones y centrado) */
-header.header-glass {
+  header.header-glass,
+  header.scrolled {
     height: auto !important;
-    min-height: 130px; 
-    padding: 20px 0 15px 0 !important;
-    background: transparent !important; /* Empieza invisible */
-    border-bottom: 1px solid transparent !important; 
-    transition: all 0.4s ease;
+    min-height: 135px;
+    /* Arriba 20px, Derecha 0, Abajo 30px, Izquierda 0 */
+    padding: 20px 0 30px 0 !important;
+    background: rgba(5, 10, 26, 0.98) !important;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.2) !important;
   }
 
   .nav-container {
@@ -575,15 +673,15 @@ header.header-glass {
   }
 
   /* El oso a salvo del techo */
-  .logo { 
-    height: 60px !important; 
-    width: 60px !important; 
-    margin-top: 10px !important; 
+  .logo {
+    height: 60px !important;
+    width: 60px !important;
+    margin-top: 10px !important;
   }
-  
-  header.scrolled .logo { 
-    height: 50px !important; 
-    width: 50px !important; 
+
+  header.scrolled .logo {
+    height: 50px !important;
+    width: 50px !important;
   }
 
   /* Enlaces ordenados y sin tachaduras */
@@ -597,51 +695,113 @@ header.header-glass {
     padding: 0;
     flex-wrap: wrap;
   }
-  
-  .nav-links a { font-size: 1rem; padding: 5px 10px; }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
 
   /* 2. ESPACIOS GENERALES (Para que nada choque con el menú gigante) */
-  .proyectos-page, 
-  .hero { padding-top: 180px !important; }
-  
-  .hero-btns { flex-direction: column; width: 100%; }
-  .btn-primary, .btn-secondary { width: 100%; }
+  .proyectos-page,
+  .hero {
+    padding-top: 180px !important;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
 
   /* 3. PROYECTOS EN MOBILE (MeepleBox) */
-  .proyecto-content { flex-direction: column; padding: 40px 20px; text-align: center; }
-  .proyecto-visual { width: 100%; height: 250px; }
-  .tech-stack { justify-content: center; }
+  .proyecto-content {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .proyecto-visual {
+    width: 100%;
+    height: 250px;
+  }
+
+  .tech-stack {
+    justify-content: center;
+  }
 
   /* 4. SERVICIOS EN MOBILE (Tarjetas) */
-  .servicios-mobile { padding-top: 80px !important; padding-bottom: 60px; background: var(--bg-dark); }
-  .servicios-grid-mobile { display: flex; flex-direction: column; gap: 30px; }
-  .servicio-card-mobile { background: var(--bg-card); padding: 40px 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-  .icon-mobile { font-size: 3.5rem; margin-bottom: 20px; }
-  .servicio-card-mobile h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 15px; }
-  .servicio-card-mobile p { color: var(--text-dim); line-height: 1.6; font-size: 1.1rem; }
+  .servicios-mobile {
+    padding-top: 80px !important;
+    padding-bottom: 60px;
+    background: var(--bg-dark);
+  }
+
+  .servicios-grid-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .servicio-card-mobile {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .icon-mobile {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+  }
+
+  .servicio-card-mobile h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .servicio-card-mobile p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
 
   /* 5. EQUIPO E IDENTIDAD A 1 COLUMNA */
-  .equipo, .identidad-grid { grid-template-columns: 1fr; padding: 40px 20px; }
-  .section-title { font-size: 2.5rem !important; }
+  .equipo,
+  .identidad-grid {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .section-title {
+    font-size: 2.5rem !important;
+  }
 }
 
 /* =========================================
-   🚑 PARCHE DE EMERGENCIA: TEXTOS Y BADGES
+   🚑 PARCHE DE EMERGENCIA: TEXTOS Y BADGES (Actualizado)
    ========================================= */
 
 /* 1. Le damos "oxígeno" a los títulos grandes para que no se aplasten */
-.hero h1, 
+.hero h1,
 .proyectos-header-container h2 {
-  line-height: 1.3 !important; 
+  line-height: 1.3 !important;
 }
 
 /* 2. Reprogramamos el Badge de iOS solo para celulares */
 @media (max-width: 900px) {
   .proyecto-badge {
-    position: relative !important; /* Le quitamos el modo flotante */
+    position: relative !important; 
     top: 0 !important;
     right: 0 !important;
     display: inline-block;
-    margin-bottom: 20px; /* Lo separamos de la palabra MeepleBox */
+    margin-top: 35px !important;    /* ESTO LO SEPARA DEL TECHO */
+    margin-bottom: 20px !important; /* Esto lo separa del texto MeepleBox */
   }
 }
