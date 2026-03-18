@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'; // Añadimos esto
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Nosotros from './pages/Nosotros';
@@ -5,18 +6,25 @@ import Proyectos from './pages/Proyectos';
 import './App.css';
 
 function App() {
+  // Lógica para el efecto Glass
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <header>
-        {/* EL CONTENEDOR PRINCIPAL VA DIRECTO EN EL HEADER */}
+      {/* Añadimos la clase dinámica aquí */}
+      <header className={scrolled ? 'scrolled' : ''}>
         <div className="nav-container">
-          
-          {/* LOGO A LA IZQUIERDA (Le puse Link para que al darle clic vuelva al inicio) */}
           <Link to="/">
             <img src="/img/logo.png" alt="Bear Logo" className="logo" />
           </Link>
-          
-          {/* EL NAV ENVUELVE SOLO A LOS LINKS PARA QUE SE VAYAN A LA DERECHA */}
           <nav>
             <ul className="nav-links">
               <li><Link to="/">Inicio</Link></li>
@@ -24,7 +32,6 @@ function App() {
               <li><Link to="/proyectos">Proyectos</Link></li>
             </ul>
           </nav>
-          
         </div>
       </header>
 

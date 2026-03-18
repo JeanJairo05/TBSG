@@ -40,9 +40,9 @@ body {
 }
 
 /* --- HEADER: LOGO IZQUIERDA, MENÚ DERECHA --- */
+/* --- HEADER: EMPIEZA TRANSPARENTE --- */
 header {
-  background: rgba(5, 10, 26, 0.95);
-  backdrop-filter: blur(10px);
+  background: transparent; /* Antes tenías rgba... cámbialo a transparent */
   position: fixed;
   width: 100%;
   top: 0;
@@ -50,8 +50,23 @@ header {
   z-index: 1000;
   height: 90px;
   display: flex;
-  align-items: center; /* Centra el nav-container verticalmente */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s ease; /* Para que el cambio sea suave */
+}
+
+/* --- ESTO ES LO QUE SE ACTIVA AL BAJAR --- */
+header.scrolled {
+  background: rgba(5, 10, 26, 0.8); /* Oscuro semi-transparente */
+  backdrop-filter: blur(12px); /* EL EFECTO CRISTAL */
+  -webkit-backdrop-filter: blur(12px);
+  height: 80px; /* Se achica un poquito, más pro */
+  border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+header.scrolled .logo {
+  height: 60px !important; /* El oso también se achica con el menú */
 }
 
 .nav-container {
@@ -352,4 +367,192 @@ header {
   color: var(--text-dim);
   font-size: 1.05rem;
   line-height: 1.6;
+}
+/* =========================================
+   PÁGINA DE PROYECTOS (Versión Limpia)
+   ========================================= */
+.proyectos-page {
+  /* Aumentamos a 200px para que el menú Glass no tape nada */
+  padding-top: 200px; 
+  min-height: 100vh;
+  padding-bottom: 100px;
+  background-color: var(--bg-dark);
+}
+
+.proyectos-header {
+  text-align: center;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.proyectos-header .section-title {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.proyectos-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 50px;
+}
+
+/* --- TARJETA MEEPLEBOX (iOS) --- */
+.proyecto-card.spotlight {
+  background: var(--bg-card);
+  border-radius: 30px;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.proyecto-card.spotlight:hover {
+  border-color: #007AFF;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 122, 255, 0.15);
+}
+
+.proyecto-badge {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: #007AFF;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.proyecto-content {
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  gap: 50px;
+}
+
+.proyecto-info { flex: 1.2; }
+.proyecto-info h3 { font-size: 3rem; color: var(--text-light); margin-bottom: 20px; }
+.proyecto-info p { font-size: 1.2rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 35px; }
+
+.proyecto-visual {
+  flex: 1;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #111, #000);
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- TARJETA PRÓXIMAMENTE --- */
+.proyecto-card.empty {
+  background: rgba(255, 255, 255, 0.01);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 80px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.proyecto-card.empty:hover {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.plus-icon {
+  font-size: 4rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.proyecto-card.empty h3 {
+  font-size: 2rem;
+  color: var(--text-light);
+  margin-bottom: 15px;
+}
+
+.proyecto-card.empty p {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+/* --- TAGS --- */
+.tech-stack { display: flex; flex-wrap: wrap; gap: 10px; }
+.tech-stack span { 
+  background: rgba(0, 122, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #007AFF;
+  border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 950px) {
+  .proyectos-page { padding-top: 150px; }
+  .proyecto-content { flex-direction: column; padding: 40px; text-align: center; }
+  .proyecto-visual { width: 100%; height: 250px; }
+  .tech-stack { justify-content: center; }
+}
+
+/* --- ARREGLO FINAL PÁGINA PROYECTOS --- */
+.proyectos-page {
+  /* Le damos 250px de espacio para que el oso tenga su propia habitación */
+  padding-top: 250px !important; 
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proyectos-header-container {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Forzamos que el título se vea grande y centrado */
+.proyectos-header-container h2 {
+  font-size: clamp(3rem, 7vw, 5rem);
+  color: white;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.proyectos-header-container h2 span {
+  color: var(--primary);
+}
+
+.tagline-proyectos {
+  font-size: 1.3rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* --- AJUSTE DE LA GRID PARA QUE NO SE PEGUE AL HEADER --- */
+.proyectos-grid {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
