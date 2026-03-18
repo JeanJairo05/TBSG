@@ -68,15 +68,13 @@ header {
   transition: all 0.4s ease; /* Para que el cambio sea suave */
 }
 
-/* --- ESTO ES LO QUE SE ACTIVA AL BAJAR --- */
-header.scrolled {
-  background: rgba(5, 10, 26, 0.8); /* Oscuro semi-transparente */
-  backdrop-filter: blur(12px); /* EL EFECTO CRISTAL */
-  -webkit-backdrop-filter: blur(12px);
-  height: 80px; /* Se achica un poquito, más pro */
-  border-bottom: 1px solid rgba(255, 204, 0, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
+/* 1.5 HEADER MÓVIL: AL HACER SCROLL (El Cristal) */
+  header.scrolled {
+    background: rgba(5, 10, 26, 0.75) !important; /* 75% de opacidad para que se vea el fondo */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important; /* Soporte para iPhone/Safari */
+    border-bottom: 1px solid rgba(255, 204, 0, 0.2) !important; 
+  }
 
 header.scrolled .logo {
   height: 60px !important; /* El oso también se achica con el menú */
@@ -309,21 +307,6 @@ header.scrolled .logo {
   z-index: 10;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .servicios-text { width: 100%; padding: 0 20px; text-align: center; }
-  .servicios-visual { opacity: 0.15; right: -500px; }
-  .servicios-sticky { justify-content: center; }
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  .servicios-text { width: 100%; text-align: center; }
-  .section-title { text-align: center !important; }
-  .servicio-activo p { margin: 0 auto; }
-  .slider-dots { justify-content: center; }
-  .servicios-visual { opacity: 0.1; right: -500px; pointer-events: none; }
-}
 /* Tarjetas con efecto Glassmorphism oscuro */
 .servicio-card {
   background: linear-gradient(145deg, #0c142b 0%, #050a1a 100%);
@@ -509,18 +492,11 @@ header.scrolled .logo {
   border: 1px solid rgba(0, 122, 255, 0.2);
 }
 
-/* RESPONSIVE */
-@media (max-width: 950px) {
-  .proyectos-page { padding-top: 150px; }
-  .proyecto-content { flex-direction: column; padding: 40px; text-align: center; }
-  .proyecto-visual { width: 100%; height: 250px; }
-  .tech-stack { justify-content: center; }
-}
-
-/* --- ARREGLO FINAL PÁGINA PROYECTOS --- */
+/* =========================================
+   PÁGINA DE PROYECTOS (ESTILOS BASE)
+   ========================================= */
 .proyectos-page {
-  /* Le damos 250px de espacio para que el oso tenga su propia habitación */
-  padding-top: 250px !important; 
+  padding-top: 250px; 
   min-height: 100vh;
   background-color: var(--bg-dark);
   display: flex;
@@ -539,7 +515,6 @@ header.scrolled .logo {
   gap: 20px;
 }
 
-/* Forzamos que el título se vea grande y centrado */
 .proyectos-header-container h2 {
   font-size: clamp(3rem, 7vw, 5rem);
   color: white;
@@ -560,7 +535,6 @@ header.scrolled .logo {
   line-height: 1.6;
 }
 
-/* --- AJUSTE DE LA GRID PARA QUE NO SE PEGUE AL HEADER --- */
 .proyectos-grid {
   width: 100%;
   max-width: 1200px;
@@ -570,63 +544,104 @@ header.scrolled .logo {
   gap: 50px;
 }
 
+
 /* =========================================
-   📱 MODO RESPONSIVE (MÓVILES Y TABLETS)
+   📱 MODO RESPONSIVE UNIFICADO (MÓVILES Y TABLETS)
    ========================================= */
-@media (max-width: 768px) {
-  
-  /* 1. MENÚ ESTILO APP (Bottom Navigation) */
-  .nav-links {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(5, 10, 26, 0.98);
-    backdrop-filter: blur(15px);
-    margin: 0;
-    padding: 15px 0;
-    justify-content: space-evenly; /* Reparte los links igualitariamente */
-    gap: 0;
-    border-top: 1px solid rgba(255, 204, 0, 0.2);
-    z-index: 1000;
+.mobile-only { display: none; }
+.desktop-only { display: block; }
+
+@media (max-width: 900px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+
+  /* 1. HEADER MÓVIL REPARADO (Cero decapitaciones y centrado) */
+header.header-glass {
+    height: auto !important;
+    min-height: 130px; 
+    padding: 20px 0 15px 0 !important;
+    background: transparent !important; /* Empieza invisible */
+    border-bottom: 1px solid transparent !important; 
+    transition: all 0.4s ease;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px !important;
+    padding: 0;
+  }
+
+  /* El oso a salvo del techo */
+  .logo { 
+    height: 60px !important; 
+    width: 60px !important; 
+    margin-top: 10px !important; 
   }
   
-  .nav-links a { font-size: 0.9rem; }
+  header.scrolled .logo { 
+    height: 50px !important; 
+    width: 50px !important; 
+  }
+
+  /* Enlaces ordenados y sin tachaduras */
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
   
-  /* Centramos el logo arriba ya que los links se fueron abajo */
-  .nav-container { justify-content: center; padding: 0; } 
-  header.scrolled { height: 70px; }
+  .nav-links a { font-size: 1rem; padding: 5px 10px; }
 
-  /* Dejamos espacio al final de la página para que el menú no tape nada */
-  body { padding-bottom: 60px; }
-
-  /* 2. HERO Y BOTONES */
-  .hero { padding: 120px 20px 60px; }
-  .hero h1 { font-size: 2.8rem; }
+  /* 2. ESPACIOS GENERALES (Para que nada choque con el menú gigante) */
+  .proyectos-page, 
+  .hero { padding-top: 180px !important; }
+  
   .hero-btns { flex-direction: column; width: 100%; }
   .btn-primary, .btn-secondary { width: 100%; }
 
-  /* 3. RUEDA INTERACTIVA (La desactivamos para que no rompa el scroll en celular) */
-  .servicios-wrapper { height: auto; padding: 60px 0; }
-  .servicios-sticky { position: relative; height: auto; overflow: visible; }
-  .servicios-text { width: 100%; padding: 0 20px; text-align: center; }
-  .servicios-visual { display: none; } /* Ocultamos la rueda gigante */
-  .servicio-activo { text-align: center; }
-  .servicio-activo p { margin: 0 auto; }
-  .slider-dots { justify-content: center; }
-
-  /* 4. PROYECTOS (MeepleBox) */
-  .proyectos-page { padding-top: 120px !important; }
-  .proyectos-header-container h2 { font-size: 2.5rem; }
-  .proyecto-content { flex-direction: column; padding: 30px 20px; gap: 30px; }
-  .proyecto-info { text-align: center; }
-  .tech-stack { justify-content: center; }
+  /* 3. PROYECTOS EN MOBILE (MeepleBox) */
+  .proyecto-content { flex-direction: column; padding: 40px 20px; text-align: center; }
   .proyecto-visual { width: 100%; height: 250px; }
-  .proyecto-badge { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 15px; }
+  .tech-stack { justify-content: center; }
 
-  /* 5. EQUIPO E IDENTIDAD */
+  /* 4. SERVICIOS EN MOBILE (Tarjetas) */
+  .servicios-mobile { padding-top: 80px !important; padding-bottom: 60px; background: var(--bg-dark); }
+  .servicios-grid-mobile { display: flex; flex-direction: column; gap: 30px; }
+  .servicio-card-mobile { background: var(--bg-card); padding: 40px 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+  .icon-mobile { font-size: 3.5rem; margin-bottom: 20px; }
+  .servicio-card-mobile h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 15px; }
+  .servicio-card-mobile p { color: var(--text-dim); line-height: 1.6; font-size: 1.1rem; }
+
+  /* 5. EQUIPO E IDENTIDAD A 1 COLUMNA */
   .equipo, .identidad-grid { grid-template-columns: 1fr; padding: 40px 20px; }
-  
-  /* El título de "Nuestro Equipo" más pequeño para que no se desborde */
-  .section-title { font-size: 2.2rem !important; }
+  .section-title { font-size: 2.5rem !important; }
+}
+
+/* =========================================
+   🚑 PARCHE DE EMERGENCIA: TEXTOS Y BADGES
+   ========================================= */
+
+/* 1. Le damos "oxígeno" a los títulos grandes para que no se aplasten */
+.hero h1, 
+.proyectos-header-container h2 {
+  line-height: 1.3 !important; 
+}
+
+/* 2. Reprogramamos el Badge de iOS solo para celulares */
+@media (max-width: 900px) {
+  .proyecto-badge {
+    position: relative !important; /* Le quitamos el modo flotante */
+    top: 0 !important;
+    right: 0 !important;
+    display: inline-block;
+    margin-bottom: 20px; /* Lo separamos de la palabra MeepleBox */
+  }
 }

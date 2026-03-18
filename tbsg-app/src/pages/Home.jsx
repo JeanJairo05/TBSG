@@ -66,13 +66,11 @@ const Home = () => {
       </section>
 
       {/* ====================================================
-          SECCIÓN STICKY: AQUÍ LA PÁGINA SE "CONGELA" AL BAJAR
+          VERSIÓN DESKTOP: SCROLL STICKY Y RUEDA
           ==================================================== */}
-      <section ref={wrapperRef} className="servicios-wrapper">
+      <section ref={wrapperRef} className="servicios-wrapper desktop-only">
         <div className="servicios-sticky">
           <div className="container" style={{ position: 'relative', display: 'flex', alignItems: 'center', width: '100%' }}>
-
-            {/* Lado Izquierdo: Textos */}
             <div className="servicios-text">
               <h2 style={{ fontSize: '1.5rem', color: 'var(--text-light)', marginBottom: '5px' }}>Nuestra</h2>
               <h2 style={{ fontSize: '1.5rem', color: 'var(--text-light)', marginBottom: '40px' }}>Expertise</h2>
@@ -86,12 +84,9 @@ const Home = () => {
                 </p>
               </div>
 
-              {/* Los Puntitos Controladores */}
               <div style={{ display: 'flex', gap: '10px', marginTop: '40px' }}>
                 {servicios.map((_, index) => (
-                  <div 
-                    key={index}
-                    onClick={() => handleDotClick(index)}
+                  <div key={index} onClick={() => handleDotClick(index)}
                     style={{
                       width: '12px', height: '12px', borderRadius: '50%', cursor: 'pointer',
                       backgroundColor: activeIndex === index ? 'var(--primary)' : 'rgba(255,255,255,0.2)',
@@ -102,32 +97,42 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Lado Derecho: Rueda Matemática Precisa */}
             <div className="servicios-visual">
-              <div 
-                className="wheel-circle" 
-                style={{ transform: `rotate(${activeIndex * -45}deg)` }}
-              >
+              <div className="wheel-circle" style={{ transform: `rotate(${activeIndex * -45}deg)` }}>
                 {servicios.map((srv, index) => {
-                  // Magia matemática: 180deg es el centro exacto a la izquierda
                   const angle = 180 + (index * 45); 
                   const counterRotation = -((activeIndex * -45) + angle);
-
                   return (
-                    <div 
-                      key={index} 
-                      className={`orb ${activeIndex === index ? 'orb-active' : ''}`}
-                      style={{
-                        transform: `rotate(${angle}deg) translate(350px) rotate(${counterRotation}deg)`
-                      }}
-                    >
+                    <div key={index} className={`orb ${activeIndex === index ? 'orb-active' : ''}`}
+                      style={{ transform: `rotate(${angle}deg) translate(350px) rotate(${counterRotation}deg)` }}>
                       {srv.icono}
                     </div>
                   );
                 })}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
+      {/* ====================================================
+          VERSIÓN MÓVIL: TARJETAS LIMPIAS (Mejor UX en celular)
+          ==================================================== */}
+      <section className="servicios-mobile mobile-only">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+            <h2 style={{ fontSize: '1.2rem', color: 'var(--text-light)' }}>Nuestra</h2>
+            <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)' }}>Expertise</h2>
+          </div>
+          
+          <div className="servicios-grid-mobile">
+            {servicios.map((srv, index) => (
+              <div key={index} className="servicio-card-mobile">
+                <div className="icon-mobile">{srv.icono}</div>
+                <h3>{srv.titulo}</h3>
+                <p>{srv.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
