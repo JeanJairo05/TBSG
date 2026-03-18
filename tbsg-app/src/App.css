@@ -653,13 +653,24 @@ header.scrolled .logo {
   }
 
   /* 1. HEADER MÓVIL REPARADO (Cero decapitaciones y centrado) */
-  header.header-glass,
+ /* 1. HEADER MÓVIL: ESTADO INICIAL (Transparente y con espacio) */
+  header.header-glass {
+    height: auto !important;
+    min-height: 135px;
+    padding: 20px 0 30px 0 !important; /* El padding de 30px abajo para que respire */
+    background: transparent !important;
+    border-bottom: 1px solid transparent !important;
+    transition: all 0.4s ease;
+  }
+
+  /* 1.5 HEADER MÓVIL: AL HACER SCROLL (El Cristal volvió) */
   header.scrolled {
     height: auto !important;
     min-height: 135px;
-    /* Arriba 20px, Derecha 0, Abajo 30px, Izquierda 0 */
-    padding: 20px 0 30px 0 !important;
-    background: rgba(5, 10, 26, 0.98) !important;
+    padding: 20px 0 30px 0 !important; /* Mantenemos el respiro */
+    background: rgba(5, 10, 26, 0.75) !important; /* 75% para que sea vidrio */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important; /* Para iOS */
     border-bottom: 1px solid rgba(255, 204, 0, 0.2) !important;
   }
 
