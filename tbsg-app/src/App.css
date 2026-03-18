@@ -20,17 +20,30 @@ body {
   overflow-x: hidden;
 }
 
-/* --- DOMANDO AL OSO --- */
+/* --- DOMANDO AL OSO (Versión Circular Premium) --- */
 .logo {
-  height: 75px !important; /* El !important obliga al navegador a obedecer */
-  width: auto;
-  max-width: 100%;
-  display: block; /* Evita márgenes raros dentro del Link */
-  transition: transform 0.3s ease;
+  height: 75px !important; 
+  width: 75px !important; /* Forzamos a que el ancho sea igual al alto para un círculo perfecto */
+  border-radius: 50%; /* Esta es la magia que lo hace redondo */
+  object-fit: cover; /* Evita que la imagen del oso se aplaste o se estire */
+  display: block; 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición con un ligero rebote */
+  
+  /* Un borde sutil dorado para enmarcarlo */
+  border: 2px solid rgba(255, 204, 0, 0.3); 
 }
 
+/* El efecto al pasar el mouse */
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(5deg); /* Crece un poquito y hace un mini giro fachero */
+  border-color: var(--primary); /* El borde se vuelve dorado sólido */
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.6), inset 0 0 10px rgba(255, 204, 0, 0.2); /* El resplandor exterior e interior */
+}
+
+/* Ajuste para cuando haces scroll y el cristal se achica */
+header.scrolled .logo {
+  height: 55px !important;
+  width: 55px !important;
 }
 
 /* Para que el Link que envuelve al oso no se estire */
@@ -555,4 +568,65 @@ header.scrolled .logo {
   display: flex;
   flex-direction: column;
   gap: 50px;
+}
+
+/* =========================================
+   📱 MODO RESPONSIVE (MÓVILES Y TABLETS)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. MENÚ ESTILO APP (Bottom Navigation) */
+  .nav-links {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 10, 26, 0.98);
+    backdrop-filter: blur(15px);
+    margin: 0;
+    padding: 15px 0;
+    justify-content: space-evenly; /* Reparte los links igualitariamente */
+    gap: 0;
+    border-top: 1px solid rgba(255, 204, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .nav-links a { font-size: 0.9rem; }
+  
+  /* Centramos el logo arriba ya que los links se fueron abajo */
+  .nav-container { justify-content: center; padding: 0; } 
+  header.scrolled { height: 70px; }
+
+  /* Dejamos espacio al final de la página para que el menú no tape nada */
+  body { padding-bottom: 60px; }
+
+  /* 2. HERO Y BOTONES */
+  .hero { padding: 120px 20px 60px; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero-btns { flex-direction: column; width: 100%; }
+  .btn-primary, .btn-secondary { width: 100%; }
+
+  /* 3. RUEDA INTERACTIVA (La desactivamos para que no rompa el scroll en celular) */
+  .servicios-wrapper { height: auto; padding: 60px 0; }
+  .servicios-sticky { position: relative; height: auto; overflow: visible; }
+  .servicios-text { width: 100%; padding: 0 20px; text-align: center; }
+  .servicios-visual { display: none; } /* Ocultamos la rueda gigante */
+  .servicio-activo { text-align: center; }
+  .servicio-activo p { margin: 0 auto; }
+  .slider-dots { justify-content: center; }
+
+  /* 4. PROYECTOS (MeepleBox) */
+  .proyectos-page { padding-top: 120px !important; }
+  .proyectos-header-container h2 { font-size: 2.5rem; }
+  .proyecto-content { flex-direction: column; padding: 30px 20px; gap: 30px; }
+  .proyecto-info { text-align: center; }
+  .tech-stack { justify-content: center; }
+  .proyecto-visual { width: 100%; height: 250px; }
+  .proyecto-badge { position: relative; top: 0; right: 0; display: inline-block; margin-bottom: 15px; }
+
+  /* 5. EQUIPO E IDENTIDAD */
+  .equipo, .identidad-grid { grid-template-columns: 1fr; padding: 40px 20px; }
+  
+  /* El título de "Nuestro Equipo" más pequeño para que no se desborde */
+  .section-title { font-size: 2.2rem !important; }
 }
