@@ -197,3 +197,159 @@ header {
 .animate-bounce-down { animation: bounceInDown 1s forwards; opacity: 0; }
 .delay-1 { animation-delay: 0.8s; }
 .delay-2 { animation-delay: 1.5s; }
+
+/* =========================================
+   RUEDA INTERACTIVA CON SCROLL STICKY
+   ========================================= */
+/* Este wrapper mide 3 pantallas de alto para permitir hacer scroll */
+.servicios-wrapper {
+  position: relative;
+  height: 300vh; 
+  background-color: var(--bg-dark);
+}
+
+/* Esta es la caja que se queda "pegada" a la pantalla mientras scrolleas el wrapper */
+.servicios-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.servicios-text {
+  width: 50%;
+  padding-left: 5%;
+  z-index: 2;
+}
+
+.servicio-activo {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* --- LA RUEDA --- */
+.servicios-visual {
+  position: absolute;
+  right: -300px;
+  top: 50%;
+  margin-top: -350px;
+  width: 700px;
+  height: 700px;
+  z-index: 1;
+}
+
+.wheel-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.15); /* Aro súper sutil */
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Giro fluido al scrollear */
+}
+
+/* LOS ORBES (Planetas) */
+.orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px; /* Centrado perfecto matemático */
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: grayscale(100%);
+  opacity: 0.3;
+}
+
+/* EL PLANETA ACTIVO */
+.orb-active {
+  width: 110px;
+  height: 110px;
+  margin: -55px 0 0 -55px;
+  background: radial-gradient(circle at top left, var(--primary) 0%, #b38f00 100%);
+  filter: grayscale(0%);
+  opacity: 1;
+  font-size: 3rem;
+  box-shadow: 0 0 40px rgba(255, 204, 0, 0.4); /* Resplandor dorado como en la foto */
+  z-index: 10;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .servicios-text { width: 100%; padding: 0 20px; text-align: center; }
+  .servicios-visual { opacity: 0.15; right: -500px; }
+  .servicios-sticky { justify-content: center; }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .servicios-text { width: 100%; text-align: center; }
+  .section-title { text-align: center !important; }
+  .servicio-activo p { margin: 0 auto; }
+  .slider-dots { justify-content: center; }
+  .servicios-visual { opacity: 0.1; right: -500px; pointer-events: none; }
+}
+/* Tarjetas con efecto Glassmorphism oscuro */
+.servicio-card {
+  background: linear-gradient(145deg, #0c142b 0%, #050a1a 100%);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto de rebote sutil */
+  position: relative;
+  overflow: hidden;
+  text-align: left; /* Alineado a la izquierda se ve más corporativo */
+}
+
+/* El resplandor dorado al hacer hover */
+.servicio-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.servicio-card:hover {
+  transform: translateY(-15px);
+  border-color: rgba(255, 204, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 204, 0, 0.1);
+}
+
+.servicio-card:hover::after {
+  transform: scaleX(1);
+}
+
+.servicio-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 15px;
+  background: rgba(255, 204, 0, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 204, 0, 0.2);
+}
+
+.servicio-card h3 {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.servicio-card p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
